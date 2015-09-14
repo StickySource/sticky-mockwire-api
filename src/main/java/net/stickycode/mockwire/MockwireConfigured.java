@@ -106,10 +106,11 @@ import net.stickycode.mockwire.feature.MockwireScan;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 @MockwireScan({
-  "net.stickycode.bootstrap", 
-  "net.stickycode.configured", 
-  "net.stickycode.configuration", 
-  "net.stickycode.metadata", 
+  "net.stickycode.bootstrap",
+  "net.stickycode.stereotype",
+  "net.stickycode.configured",
+  "net.stickycode.configuration",
+  "net.stickycode.metadata",
   "net.stickycode.coercion",
   "net.stickycode.resource",
   "net.stickycode.xml.jaxb"

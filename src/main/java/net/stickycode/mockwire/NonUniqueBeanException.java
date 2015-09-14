@@ -14,13 +14,13 @@ package net.stickycode.mockwire;
 
 import java.util.Set;
 
-import net.stickycode.exception.PermanentException;
+import net.stickycode.stereotype.failure.ParameterisedFailure;
 
 
 
 @SuppressWarnings("serial")
 public class NonUniqueBeanException
-    extends PermanentException {
+    extends ParameterisedFailure {
 
   public NonUniqueBeanException(int size, Set<String> keySet, Class<?> type) {
     super("Found {} beans {} of type {}, expected 1", size, keySet, type.getSimpleName());

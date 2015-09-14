@@ -12,12 +12,12 @@
  */
 package net.stickycode.mockwire;
 
-import net.stickycode.exception.PermanentException;
+import net.stickycode.stereotype.failure.ParameterisedFailure;
 
 
 @SuppressWarnings("serial")
 public class MissingBeanException
-    extends PermanentException {
+    extends ParameterisedFailure {
 
 
   public MissingBeanException(Object target, String missingBeanName, Class<?> missingBeanType) {
