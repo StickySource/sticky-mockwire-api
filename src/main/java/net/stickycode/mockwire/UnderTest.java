@@ -20,50 +20,50 @@ import java.lang.annotation.Target;
 
 /**
  * In empirical terms this is the object of investigation that we are going to prod and see what happens.
- * 
+ *
  * <p>
  * Technically we mark a field as defining a bean in an isolated test context and also mark the field for injection of the value
  * created in the isolated test context.
  * </p>
- * 
+ *
  * <p>
  * In the following example <code>ConcreteClass</code> will be blessed into a singleton in the isolated test context.
  * </p>
- * 
+ *
  * <h3>Using &#064;RunWith(MockwireRunner.class)</h3>
- * 
+ *
  * <pre>
  *  &#064;RunWith(MockwireRunner.class)
  *  public class MockwireTest {
- * 
+ *
  *  &#064;UnderTest
  *  ConcreteClass field;
- * 
+ *
  *  &#064;Test
  *  public void testUnderTest() {
  *    assertThat(field).isNotNull();
  *  }
- * 
+ *
  * </pre>
- * 
+ *
  * <h3>Using Mockwire.isolate()</h3>
- * 
+ *
  * <pre>
  *  public class MockwireTest {
- * 
+ *
  *  &#064;UnderTest
  *  ConcreteClass field;
- * 
+ *
  *  &#064;Before
  *  public void setup() {
  *    Mockwire.isolate(this);
  *  }
- * 
+ *
  *  &#064;Test
  *  public void testUnderTest() {
  *    assertThat(field).isNotNull();
  *  }
- * 
+ *
  * </pre>
  */
 @Inherited
@@ -72,7 +72,7 @@ import java.lang.annotation.Target;
 public @interface UnderTest {
 
   /**
-   * Configuration for the object under test, used to resolve any {@link Configured} fields
+   * @return Configuration for the object under test, used to resolve any Configured fields
    */
   String[] value() default {};
 }

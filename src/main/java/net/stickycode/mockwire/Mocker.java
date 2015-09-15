@@ -12,16 +12,24 @@
  */
 package net.stickycode.mockwire;
 
-
+/**
+ * Contract for things that can generate mock implementations of other contracts such that their behaviour can be controlled
+ *
+ */
 public interface Mocker {
 
   /**
-   * Return an object that appears to be of <code>type<code> but can be fully controlled to isolate and test real code.
+   * @return object that appears to be of <b>type</b> but can be fully controlled to isolate and test real code.
+   * @param mockName The name for the mock to be generated
+   * @param type The type to generate a mock for
+   * @param <T> The type of the generated mock
    */
   <T> T mock(String mockName, Class<T> type);
 
   /**
-   * Return an object that appears to be of <code>type<code> but can be fully controlled to isolate and test real code.
+   * @return an object that appears to be of <b>type</b> but can be fully controlled to isolate and test real code.
+   * @param type The type to generate a mock for
+   * @param <T> The type of the generated mock
    */
   <T> T mock(Class<T> type);
 

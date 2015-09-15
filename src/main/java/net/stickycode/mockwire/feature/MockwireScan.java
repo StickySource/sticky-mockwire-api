@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 public @interface MockwireScan {
 
   /**
-   * The list of packages to scan to support the feature
+   * @return The list of packages to scan to support the feature
    */
   String[] value();
 }

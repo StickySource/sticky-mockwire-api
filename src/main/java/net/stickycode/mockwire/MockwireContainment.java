@@ -9,57 +9,64 @@ import java.lang.annotation.Target;
 import net.stickycode.stereotype.StickyComponent;
 import net.stickycode.stereotype.StickyPlugin;
 
-
 /**
- * <p>This annotation is used to define the containment of a Mockwire invocation where a runner is used for the tests.</p>
+ * <p>
+ * This annotation is used to define the containment of a Mockwire invocation where a runner is used for the tests.
+ * </p>
  *
- * <p>This covers the scenario when scanning is required outside of the test class itself. The default scanning path is that
- * of the test class itself. So in the following example the classpath will be scanned for StickyComponent's and they will be included
- * in the {@link IsolatedTestManifest}.</p>
+ * <p>
+ * This covers the scenario when scanning is required outside of the test class itself. The default scanning path is that
+ * of the test class itself. So in the following example the classpath will be scanned for StickyComponent's and they will be
+ * included
+ * in the {@link MockwireContainer}.
+ * </p>
  *
  * <pre>
  * package net.stickycode.example;
  *
- *  &#064;RunWith(MockwireRunner.class)
- *  &#064;MockwireContainment()
- *  public class ContainedTest {
+ * &#064;RunWith(MockwireRunner.class)
+ * &#064;MockwireContainment()
+ * public class ContainedTest {
  *
- *  &#064;UnderTest
- *  SomeConcreteClass field;
+ *   &#064;UnderTest
+ *   SomeConcreteClass field;
  *
- *  &#064;Inject
- *  SomeOtherClass thatLivesInTheSamePackageAsTheTest;
+ *   &#064;Inject
+ *   SomeOtherClass thatLivesInTheSamePackageAsTheTest;
  *
- *  &#064;Inject
- *  IsolateTestContext context;
+ *   &#064;Inject
+ *   IsolateTestContext context;
  *
- *  &#064;Test
- *  public void testBless() {
- *    assertThat(context.hasRegisteredType(ConcreteClass.class)).isTrue();
- *    assertThat(context.hasRegisteredType(SomeOtherClass.class)).isTrue();
- *  }
+ *   &#064;Test
+ *   public void testBless() {
+ *     assertThat(context.hasRegisteredType(ConcreteClass.class)).isTrue();
+ *     assertThat(context.hasRegisteredType(SomeOtherClass.class)).isTrue();
+ *   }
  * }
  * </pre>
  *
- * <p>It is possible to define the path(s) to scan from</p>
+ * <p>
+ * It is possible to define the path(s) to scan from
+ * </p>
+ *
  * <pre>
  * package net.stickycode.example;
  *
- *  &#064;RunWith(MockwireRunner.class)
- *  &#064;MockwireContainment("net.stickcode.other")
- *  public class ContainedTest {
+ * &#064;RunWith(MockwireRunner.class)
+ * &#064;MockwireContainment("net.stickcode.other")
+ * public class ContainedTest {
  *
- *  &#064;UnderTest
- *  SomeConcreteClass field;
+ *   &#064;UnderTest
+ *   SomeConcreteClass field;
  *
- *  &#064;Inject
- *  SomeOtherClass thatLivesInPackageNetStickycodeOther;
+ *   &#064;Inject
+ *   SomeOtherClass thatLivesInPackageNetStickycodeOther;
  *
- *  &#064;Test
- *  public void testBless() {
- *    assertThat(context.hasRegisteredType(ConcreteClass.class)).isTrue();
- *    assertThat(context.hasRegisteredType(SomeOtherClass.class)).isTrue();
- *  }
+ *   &#064;Test
+ *   public void testBless() {
+ *     assertThat(context.hasRegisteredType(ConcreteClass.class)).isTrue();
+ *     assertThat(context.hasRegisteredType(SomeOtherClass.class)).isTrue();
+ *   }
  * }
  * </pre>
  */
@@ -67,12 +74,12 @@ import net.stickycode.stereotype.StickyPlugin;
 @Target(ElementType.TYPE)
 public @interface MockwireContainment {
   /**
-   * The list of paths to build the context from, the default is the package of the annotated class
+   * @return The list of paths to build the context from, the default is the package of the annotated class
    */
-  String[] value() default {};
+  String[]value() default {};
 
   /**
-   * Identify components (meta-)annotated with these markers
+   * @return The (meta) annotations that will be used to idenfigy components
    */
-  Class<? extends Annotation>[] componentMarkers() default {StickyComponent.class, StickyPlugin.class};
+  Class<? extends Annotation>[]componentMarkers() default { StickyComponent.class, StickyPlugin.class };
 }

@@ -39,7 +39,7 @@ import java.lang.annotation.Target;
  *
  *  &#064;Uncontrolled("value=true")
  *  ConfiguredConcreteClass uncontrolledAndConfigured;
- *  
+ *
  *  &#064;UnderTest
  *  OtherConcreteClass underTest;
  *
@@ -58,7 +58,7 @@ import java.lang.annotation.Target;
  *    Boolean value;
  *  }
  * </pre>
- * 
+ *
  * <h3>Configured example</h3>
  * <p>
  * In the following example <code>ConcreteClass</code> will be registered into a singleton in the isolated test context created
@@ -70,7 +70,7 @@ import java.lang.annotation.Target;
  *
  *  &#064;Uncontrolled("value=true")
  *  ConfiguredConcreteClass uncontrolledAndConfigured;
- *  
+ *
  *  &#064;UnderTest
  *  ConcreteClass underTest;
  *
@@ -86,13 +86,13 @@ import java.lang.annotation.Target;
  *    &#064;Configured
  *    Boolean value;
  *  }
- *  
+ *
  *  static class ConcreteClass {
  *     &#064;Inject
  *     ConfiguredConcreteClass configured;
  *  }
  * </pre>
- * 
+ *
  * <h3>Method factory example</h3>
  * <p>
  * In the following example <code>ConcreteClass</code> will be registered into a singleton in the isolated test context created
@@ -106,7 +106,7 @@ import java.lang.annotation.Target;
  *  ConfiguredConcreteClass uncontrolledAndConfigured() {
  *    return new ConfiguredConcreteClass();
  *  }
- *  
+ *
  *  &#064;UnderTest
  *  ConcreteClass underTest;
  *
@@ -122,7 +122,7 @@ import java.lang.annotation.Target;
  *    &#064;Configured
  *    Boolean value;
  *  }
- *  
+ *
  *  static class ConcreteClass {
  *     &#064;Inject
  *     ConfiguredConcreteClass configured;
@@ -134,7 +134,7 @@ import java.lang.annotation.Target;
 @Target({ElementType.METHOD, ElementType.FIELD})
 public @interface Uncontrolled {
   /**
-   * Configuration for the uncontrolled object, used to resolve any {@link Configured} fields
+   * @return Configuration for the uncontrolled object, used to resolve any Configured fields
    */
   String[] value() default {};
 }

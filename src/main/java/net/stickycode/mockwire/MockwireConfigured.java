@@ -111,14 +111,12 @@ import net.stickycode.mockwire.feature.MockwireScan;
   "net.stickycode.configured",
   "net.stickycode.configuration",
   "net.stickycode.metadata",
-  "net.stickycode.coercion",
-  "net.stickycode.resource",
-  "net.stickycode.xml.jaxb"
+  "net.stickycode.coercion"
   })
 public @interface MockwireConfigured {
 
   /**
-   * The properties files or values used for configuring wired components.
+   * @return The properties files or values used for configuring wired components.
    *
    */
   String[] value() default { "configured.properties" };
