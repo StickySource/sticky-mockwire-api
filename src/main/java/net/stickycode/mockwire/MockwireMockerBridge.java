@@ -22,17 +22,17 @@ import net.stickycode.bootstrap.StickyBootstrap;
  * Contract for things that can generate mock implementations of other contracts such that their behaviour can be controlled
  *
  */
-public interface Mocker {
+public interface MockwireMockerBridge {
 
-  static Mocker bridge() {
-    ServiceLoader<Mocker> loader = ServiceLoader.load(Mocker.class);
-    Iterator<Mocker> bootstraps = loader.iterator();
+  static MockwireMockerBridge bridge() {
+    ServiceLoader<MockwireMockerBridge> loader = ServiceLoader.load(MockwireMockerBridge.class);
+    Iterator<MockwireMockerBridge> bootstraps = loader.iterator();
     if (!bootstraps.hasNext())
-      throw new RuntimeException(Mocker.class + " implementation not found");
+      throw new RuntimeException(MockwireMockerBridge.class + " implementation not found");
 
-    Mocker bridge = bootstraps.next();
+    MockwireMockerBridge bridge = bootstraps.next();
     if (bootstraps.hasNext())
-      throw new RuntimeException("Too many " + Mocker.class + " implementations found");
+      throw new RuntimeException("Too many " + MockwireMockerBridge.class + " implementations found");
 
     return bridge;
   }
@@ -40,11 +40,13 @@ public interface Mocker {
   void initialise(StickyBootstrap bootstrap, Class<?> metadata);
 
   /**
+   * @param name The name of the mock in the container
    * @return object that appears to be of the type of the controlled field but can be fully controlled to isolate and test real code.
    * @param test The instance of the test class that is being exercised
-   * @param <T> The type of the generated mock
+   * @param type The type of the generated mock
    */
-  Object mock(Object test, Field controlledField);
+  void process(String name, Object target, Field field, Class<?> type);
+
 
 
 
