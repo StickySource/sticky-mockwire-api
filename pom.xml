@@ -35,15 +35,15 @@
 			<version>[3.1,4)</version>
 		</dependency>
 	</dependencies>
-   <build>
-                <plugins>
-                        <plugin>
-                                <groupId>org.codehaus.mojo</groupId>
-                                <artifactId>clirr-maven-plugin</artifactId>
-                                <configuration>
-                                        <comparisonVersion>[8.3]</comparisonVersion>
-                                </configuration>
-                        </plugin>
-                </plugins>
-        </build>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>clirr-maven-plugin</artifactId>
+				<configuration>
+					<comparisonVersion>[8.3]</comparisonVersion>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

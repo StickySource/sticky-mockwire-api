@@ -41,8 +41,8 @@ public interface MockwireMockerBridge {
 
   /**
    * @param name The name of the mock in the container
-   * @return object that appears to be of the type of the controlled field but can be fully controlled to isolate and test real code.
-   * @param test The instance of the test class that is being exercised
+   * @param field The field that needs to have a mocked value
+   * @param target The instance of the test class that is being exercised
    * @param type The type of the generated mock
    */
   void process(String name, Object target, Field field, Class<?> type);
