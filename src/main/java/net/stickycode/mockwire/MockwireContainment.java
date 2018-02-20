@@ -73,13 +73,14 @@ import net.stickycode.stereotype.StickyPlugin;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface MockwireContainment {
+
   /**
    * @return The list of paths to build the context from, the default is the package of the annotated class
    */
-  String[]value() default {};
+  String[] value() default {};
 
   /**
-   * @return The (meta) annotations that will be used to idenfigy components
+   * @return The (meta) annotations that will be used to identify components
    */
-  Class<? extends Annotation>[]componentMarkers() default { StickyComponent.class, StickyPlugin.class };
+  Class<? extends Annotation>[] componentMarkers() default { StickyComponent.class, StickyPlugin.class };
 }
